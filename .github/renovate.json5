@@ -3,4 +3,11 @@
   "extends": [
     "config:recommended",
   ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true,
+    },
+  ],
 }
