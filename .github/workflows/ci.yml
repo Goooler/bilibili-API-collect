@@ -15,7 +15,5 @@ jobs:
         with:
           node-version: 22
           cache: yarn
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Build VuePress site
-        run: yarn build
+      - name: Build with yarn
+        run: yarn && yarn build
