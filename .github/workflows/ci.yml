@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - trunk
   pull_request:
   workflow_dispatch:
 
@@ -17,7 +17,7 @@ jobs:
       - name: Build with yarn
         run: yarn && yarn build
       - uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/trunk' && github.event_name == 'push'
         with:
           force_orphan: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
