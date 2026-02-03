@@ -235,7 +235,7 @@
 | mobi_app | str | android | |
 | platform | str | android | |
 | s_locale | str | zh_CN | |
-| statistics | str | {"appId":1,"platform":3,"version":"7.12.0","abtest":""} | 需要URLEncoder |
+| statistics | str | {"appId":1,"platform":3,"version":"7.12.0","abtest":""} | 需要URL编码 |
 | ts | num | 1672917355 | 时间戳，单位秒 |
 | target_id | num | 1022 | 可任意直播房间号 |
 | reward_index | str | "0" | 任务id（字符串形式的数字）<br />"0"：每日任务<br />"1"~"3"：每周任务id |
@@ -254,13 +254,13 @@
 | bili-http-engine | cronet | |
 | buvid | buvid3 | web端为操作登录接口时Cookie中的`buvid3`<br />若登录设备无`buvid`则留空 |
 | env | prod | |
-| fp_local | 992219737dd69e7d98864235335347c53476691d4482fc3e57a835e894751811 | 64位随机 |
-| fp_remote | 992219737dd69e7d98864235335347c53476691d4482fc3e57a835e894751811 | 64位随机, 同fp_local |
+| fp_local | 992219737dd69e7d98864235335347c53476691d4482fc3e57a835e894751811 | 64个十六进制字符随机串 |
+| fp_remote | 992219737dd69e7d98864235335347c53476691d4482fc3e57a835e894751811 | 64个十六进制字符随机串, 同 fp_local |
 | session_id | 99221973 | fp_local头8个字符 |
 | x-bili-aurora-eid | WFICRlE= | |
 | x-bili-aurora-zone | | 留空 |
 | x-bili-mid | 0 | 用户uid |
-| x-bili-trace-id | 992219737dd69e7d98864235335347c5:3476691d4482fc3e:0:0 | 32随机:16随机:0:0 |
+| x-bili-trace-id | 992219737dd69e7d98864235335347c5:3476691d4482fc3e:0:0 | 32个十六进制字符:16个十六进制字符:0:0 |
 
 
 <details>
