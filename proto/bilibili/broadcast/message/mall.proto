@@ -25,7 +25,7 @@ enum MsgType {
     // 
     USER_ADD = 5;
     // 
-    MERCHANT_REJET = 6;
+    MERCHANT_REJECT = 6;
 }
 
 // 
