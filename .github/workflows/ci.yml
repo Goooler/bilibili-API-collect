@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - trunk
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build with yarn
+        run: yarn && yarn build
+      - uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/trunk' && github.event_name == 'push'
+        with:
+          force_orphan: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .vuepress/dist
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
