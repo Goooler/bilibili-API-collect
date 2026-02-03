@@ -117,7 +117,7 @@ bilibili-API-collect (简称 BAC 或 b-a-c) 是一个用于学习研究、社区
 
 ### Discussion 发起原则
 
-1. 标题言简意骇，说明欲提出的问题要点
+1. 标题言简意赅，说明欲提出的问题要点
 2. 正文对遇到的问题进行尽可能详细的描述
 3. 注意[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)和[别像弱智一样提问](https://github.com/tangx/Stop-Ask-Questions-The-Stupid-Ways)
 
