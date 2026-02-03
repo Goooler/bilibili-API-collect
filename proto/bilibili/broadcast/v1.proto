@@ -165,7 +165,7 @@ message MessageAckReq {
 // 
 message ModResourceResp {
     // 
-    Action atcion = 1;
+    Action action = 1;
     // 
     string app_key = 2;
     // 
