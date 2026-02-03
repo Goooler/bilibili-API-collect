@@ -10,7 +10,7 @@
 
 > https://api.live.bilibili.com/xlive/app-ucenter/v1/userTask/GetUserTaskProgress
 
-_请求方式：GET_
+*请求方式：GET*
 
 认证方式：APP
 
@@ -216,7 +216,7 @@ _请求方式：GET_
 
 > https://api.live.bilibili.com/xlive/app-ucenter/v1/userTask/UserTaskReceiveRewards
 
-_请求方式：POST_
+*请求方式：POST*
 
 认证方式：APP
 
