@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Build with bun
-        run: bun && bun build
+        run: bun install && bun build
       - uses: actions/upload-pages-artifact@v4
         with:
           path: .vuepress/dist
