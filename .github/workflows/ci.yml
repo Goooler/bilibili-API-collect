@@ -10,18 +10,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build with yarn
+        run: yarn && yarn build
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .vuepress/dist
+
+  deploy:
+    runs-on: ubuntu-slim
+    if: github.ref == 'refs/heads/trunk' && github.event_name == 'push'
+    needs: build
     environment:
       name: github-pages
     permissions:
       id-token: write
       pages: write
     steps:
-      - uses: actions/checkout@v6
-      - name: Build with yarn
-        run: yarn && yarn build
-      - uses: actions/upload-pages-artifact@v4
-        if: github.ref == 'refs/heads/trunk' && github.event_name == 'push'
-        with:
-          path: .vuepress/dist
       - uses: actions/deploy-pages@v4
-        if: github.ref == 'refs/heads/trunk' && github.event_name == 'push'
