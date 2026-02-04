@@ -14,7 +14,9 @@ jobs:
       - uses: actions/checkout@v6
       - uses: oven-sh/setup-bun@v2
       - name: Build with bun
-        run: bun install && bun build
+        run: |
+          bun install --frozen-lockfile
+          bun run build
       - uses: actions/upload-pages-artifact@v4
         with:
           path: .vuepress/dist
