@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
       - name: Build with bun
         run: bun install && bun build
       - uses: actions/upload-pages-artifact@v4
