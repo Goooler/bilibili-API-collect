@@ -8,7 +8,13 @@ import { shikiPlugin } from '@vuepress/plugin-shiki'
 const base = "/bilibili-API-collect/";
 
 export default defineUserConfig({
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      build: {
+        chunkSizeWarningLimit: 2048,
+      },
+    },
+  }),
   base: base,
   lang: "zh-CN",
   title: "BAC Document",
