@@ -2151,7 +2151,7 @@ curl 'https://api.bilibili.com/x/polymer/web-dynamic/v1/detail/forward' \
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| rich_text_nodes | object[] | 富文本节点 | 参见 [富文本节点](../opus/rich_text_node.md) |
+| rich_text_nodes | object[] | 富文本节点 | 参见 [富文本节点](../opus/rich_text_nodes.md) |
 | text | string | 纯文本内容 |  |
 
 `data.item.user` 对象:
