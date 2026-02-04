@@ -20,8 +20,6 @@ jobs:
       - name: Build with yarn
         run: yarn && yarn build
       - uses: actions/upload-pages-artifact@v4
-        if: github.ref == 'refs/heads/trunk' && github.event_name == 'push'
         with:
           path: .vuepress/dist
       - uses: actions/deploy-pages@v4
-        if: github.ref == 'refs/heads/trunk' && github.event_name == 'push'
