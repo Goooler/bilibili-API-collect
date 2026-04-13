@@ -15,7 +15,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - name: Build with bun
         run: bun install && bun run build
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: .vuepress/dist
 
