@@ -28,6 +28,8 @@ service Reply {
     rpc ShareRepliesInfo(ShareRepliesInfoReq) returns (ShareRepliesInfoResp);
     // 评论表情推荐列表接口
     rpc SuggestEmotes(SuggestEmotesReq) returns (SuggestEmotesResp);
+    // 翻译评论接口
+    rpc TranslateReply(TranslateReplyReq) returns (ReplyInfoReply);
 }
 
 // 活动
@@ -142,7 +144,7 @@ message CursorReply {
     // 排序方式
     // 2:时间 3:热度
     Mode mode = 5;
-    // 当前排序mode在切换按钮上的展示文案 
+    // 当前排序mode在切换按钮上的展示文案
     string mode_text = 6;
 }
 
@@ -855,6 +857,8 @@ message ReplyInfo {
     ReplyControl reply_control = 14;
     // 发布者信息V2
     MemberV2 member_v2 = 15;
+    // 翻译结果(仅在翻译请求中返回)
+    string translated_text = 17;
 }
 
 // 查询单条评论-响应
@@ -1238,4 +1242,14 @@ message Vote {
     string title = 2;
     // 参与人数
     int64 count = 3;
+}
+
+// 翻译评论请求
+message TranslateReplyReq {
+    // 业务type
+    int32 type = 1;
+    // 稿件id
+    int64 oid = 2;
+    // 评论id
+    int64 rpid = 3;
 }
