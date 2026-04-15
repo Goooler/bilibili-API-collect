@@ -39,6 +39,8 @@ service Reply {
     rpc ShareReplyMaterial (ShareReplyMaterialReq) returns (ShareReplyMaterialResp);
     // 
     rpc SuggestEmotes (SuggestEmotesReq) returns (SuggestEmotesResp);
+    // 翻译评论接口
+    rpc TranslateReply (TranslateReplyReq) returns (ReplyInfoReply);
     // 
     rpc UpdateSingleReplyNotificationConfig (UpdateSingleReplyNotificationConfigReq) returns (UpdateSingleReplyNotificationConfigResp);
     // 
@@ -1378,6 +1380,8 @@ message ReplyControl {
     string context_feature = 35;
     // 
     InsertEffect insert_effect = 36;
+    // 是否显示翻译按钮，1: 显示，2: 不显示
+    int32 translate_state = 37;
 }
 
 // 
@@ -1527,6 +1531,8 @@ message ReplyInfo {
     MemberV2 member_v2 = 15;
     // 
     string track_info = 16;
+    // 翻译结果(仅在翻译请求中返回)
+    string translated_text = 17;
 }
 
 // 
@@ -2162,3 +2168,12 @@ message WordSearchParam {
     int64 shown_count = 1;
 }
 
+// 翻译评论请求
+message TranslateReplyReq {
+    // 业务type
+    int32 type = 1;
+    // 稿件id
+    int64 oid = 2;
+    // 评论id
+    int64 rpid = 3;
+}
