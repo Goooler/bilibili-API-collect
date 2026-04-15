@@ -1380,6 +1380,8 @@ message ReplyControl {
     string context_feature = 35;
     // 
     InsertEffect insert_effect = 36;
+    // 是否显示翻译按钮，1: 显示，2: 不显示
+    int32 translate_state = 37;
 }
 
 // 
@@ -2175,4 +2177,3 @@ message TranslateReplyReq {
     // 评论id
     int64 rpid = 3;
 }
-

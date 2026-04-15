@@ -858,7 +858,7 @@ message ReplyInfo {
     // 发布者信息V2
     MemberV2 member_v2 = 15;
     // 翻译结果(仅在翻译请求中返回)
-    string translated_text = 17;
+    Content translated_text = 17;
 }
 
 // 查询单条评论-响应
