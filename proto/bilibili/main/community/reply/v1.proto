@@ -21,6 +21,8 @@ service Reply {
     rpc DialogList (DialogListReq) returns (DialogListReply);
     // 
     rpc DoVote (DoVoteReq) returns (DoVoteResp);
+    // 折叠评论列表接口
+    rpc FoldList (FoldListReq) returns (FoldListResp);
     // 
     rpc MainList (MainListReq) returns (MainListReply);
     // 
@@ -39,14 +41,12 @@ service Reply {
     rpc ShareReplyMaterial (ShareReplyMaterialReq) returns (ShareReplyMaterialResp);
     // 
     rpc SuggestEmotes (SuggestEmotesReq) returns (SuggestEmotesResp);
+    // 翻译评论接口
+    rpc TranslateReply (TranslateReplyReq) returns (TranslateReplyResp);
     // 
     rpc UpdateSingleReplyNotificationConfig (UpdateSingleReplyNotificationConfigReq) returns (UpdateSingleReplyNotificationConfigResp);
     // 
     rpc UserCallback (UserCallbackReq) returns (UserCallbackReply);
-    // 
-    rpc TranslateReply (TranslateReplyReq) returns (TranslateReplyResp);
-    // 
-    rpc FoldList(FoldListReq) returns (FoldListResp);
 }
 
 // 
@@ -245,7 +245,7 @@ message DetailListReply {
     string session_id = 9;
     // 
     SubjectTitle subject_title = 10;
-    // 
+    // 混合卡片列表
     repeated MixedCard mixed_cards = 11;
 }
 
@@ -909,18 +909,17 @@ message MixedCard {
         UNKNOWN = 0;
         // 
         QUESTION = 1;
-        // 
+        // 折叠卡片
         FOLD = 2;
     }
-
+    
     // 
     oneof item {
         // 
         QuestionCard question = 4;
-        // 
+        // 折叠卡片
         FoldCard fold = 5;
     }
-
     // 
     MixedCard.Type type = 1;
     // 
@@ -1389,7 +1388,7 @@ message ReplyControl {
     string context_feature = 35;
     // 
     InsertEffect insert_effect = 36;
-    // 
+    // 翻译按钮状态
     TranslationSwitch translation_switch = 37;
 }
 
@@ -1540,7 +1539,7 @@ message ReplyInfo {
     MemberV2 member_v2 = 15;
     // 
     string track_info = 16;
-    // 
+    // 翻译结果(仅在翻译请求中返回)
     Content translated_content = 17;
 }
 
@@ -2183,56 +2182,56 @@ message TranslateReplyReq {
     int64 type = 1;
     // 稿件id
     int64 oid = 2;
-    // 评论id
+    // 评论id列表
     repeated int64 rpids = 3;
 }
 
-// 
+// 翻译评论响应
 message TranslateReplyResp {
-    // 
+    // 翻译结果，key为评论id
     map<int64, ReplyInfo> translated_replies = 1;
 }
 
-// 
+// 翻译按钮状态
 enum TranslationSwitch {
-    // 
+    // 未指定
     TRANSLATION_SWITCH_UNSPECIFIED = 0;
-    // 
+    // 不支持翻译？
     TRANSLATION_SWITCH_UNSUPPORTED = 1;
-    // 
+    // 显示译文？
     TRANSLATION_SWITCH_SHOW_TRANSLATION = 2;
-    // 
+    // 显示原文？
     TRANSLATION_SWITCH_SHOW_ORIGIN = 3;
 }
 
-// 
+// 折叠卡片
 message FoldCard {
-    // 
+    // 底部文案？
     string bottom_text = 1;
-    // 
+    // 折叠评论列表的分页信息
     bilibili.pagination.FeedPagination fold_pagination = 2;
 }
 
-// 
+// 折叠评论列表请求
 message FoldListReq {
-    // 
+    // 稿件id
     int64 oid = 1;
-    // 
+    // 业务type
     int64 type = 2;
-    // 
+    // 扩展字段？
     string extra = 3;
-    // 
+    // 分页信息
     bilibili.pagination.FeedPagination pagination = 4;
 }
 
-// 
+// 折叠评论列表响应
 message FoldListResp {
-    // 
+    // 折叠评论列表
     repeated ReplyInfo replies = 1;
-    // 
+    // 分页信息
     bilibili.pagination.FeedPaginationReply pagination_reply = 2;
-    // 
+    // 标题
     string title = 3;
-    // 
+    // 评论区显示控制字段
     SubjectControl subject_control = 4;
 }
